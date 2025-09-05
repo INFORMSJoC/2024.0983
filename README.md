@@ -25,7 +25,7 @@ https://doi.org/10.1287/ijoc.2024.0983.cd
 Below is the BibTex for citing this snapshot of the repository.
 
 ```
-@misc{CacheTest,
+@misc{pdhcg,
   author =        {Y. Huang, W. Zhang, H. Li, H. Liu, D. Ge and Y. Ye},
   publisher =     {INFORMS Journal on Computing},
   title =         {A Restarted Primal-Dual Hybrid Conjugate Gradient Method for Large-Scale Quadratic Programming},
@@ -38,28 +38,47 @@ Below is the BibTex for citing this snapshot of the repository.
 
 ## Description
 
-The goal of this software is to demonstrate the effect of cache optimization.
+This repository provides the data and solver suggested in **A Restarted Primal-Dual Hybrid Conjugate Gradient Method for Large-Scale Quadratic Programming**.
 
-## Building
+## Data
+See `data/READNE.md`.
 
-In Linux, to build the version that multiplies all elements of a vector by a
-constant (used to obtain the results in [Figure 1](results/mult-test.png) in the
-paper), stepping K elements at a time, execute the following commands.
+## Output Intepretation
 
-```
-make mult
-```
+A table of iteration stats will be printed with the following headings.
 
-Alternatively, to build the version that sums the elements of a vector (used
-to obtain the results [Figure 2](results/sum-test.png) in the paper), stepping K
-elements at a time, do the following.
+- Runtime
 
-```
-make clean
-make sum
-```
+  - `#iter`: the current iteration number.
+  - `#kkt`: the cumulative number of times the KKT matrix is multiplied.
+  - `seconds`: the cumulative solve time in seconds.
 
-Be sure to make clean before building a different version of the code.
+- Residuals
+
+  - `pr norm`: the Euclidean norm of primal residuals (i.e., the constraint violation).
+  - `du norm`: the Euclidean norm of the dual residuals.
+  - `gap`: the gap between the primal and dual objective.
+
+- Solution Information
+
+  - `pr obj`: the primal objective value.
+  - `pr norm`: the Euclidean norm of the primal variable vector.
+  - `du norm`: the Euclidean norm of the dual variable vector.
+
+- Relative residuals
+
+  - `rel pr`: the Euclidean norm of the primal residuals, relative to the right-hand side.
+  - `rel dul`: the Euclidean norm of the dual residuals, relative to the primal linear objective.
+  - `rel gap`: the relative optimality gap.
+  
+
+- Statistics
+  - Total Iterations: The total number of Primal-Dual iterations.
+
+  - CG  iteration: The total number of Conjugate Gradient iterations.
+
+  - Solving Status: Indicating if it found an optimal solution.
+
 
 ## Results
 
@@ -76,28 +95,20 @@ $^1$The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and
 **Compared to rAPDHG, PDHCG algorithm significantly reduces the dependency on $Q$.**
 
 ### Numerical Advantege
+#### Comparison over different condition number
+
+<img src="asset/condition.png" width="50%" />
+
+#### Experiment Over Public Benchmark
+<img src="asset/MM.png" width="50%" />
+
+#### Comparison over generated large instances
+<img src="asset/randomqp.png" width="50%" />
+
+#### Comparison over real-world large instances
+<img src="asset/real_large.png" width="50%" />
 
 
-## Replicating
-
-To replicate the results in [Figure 1](results/mult-test), do either
-
-```
-make mult-test
-```
-or
-```
-python test.py mult
-```
-To replicate the results in [Figure 2](results/sum-test), do either
-
-```
-make sum-test
-```
-or
-```
-python test.py sum
-```
 
 ## Ongoing Development
 
@@ -107,4 +118,4 @@ This code is being developed on an on-going basis at the author's
 ## Support
 
 For support in using this software, submit an
-[issue](https://github.com/tkralphs/JoCTemplate/issues/new).
+[issue](https://github.com/COPT-Public/PDHCG/issues/new).
