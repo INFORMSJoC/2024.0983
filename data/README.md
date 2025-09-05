@@ -17,9 +17,49 @@ We filtered and relaxed some of these, collecting 34 problems for our tests. Giv
 
 ## Generated Datasets
 
-We provide generating scripts for 4 types of QP problems.
+We provide generating scripts for 4 types of QP problems implemented in `generator.jl`
 
+#### Installation
+```bash
+julia -e 'using Pkg; Pkg.add(["ArgParse", "JuMP", "GZip", "SparseArrays", "Random", "Gurobi"])'
+```
 
+#### Usage
+```bash
+julia gen_qp.jl --problem <type> --n <size> [-o <file>] [optional flags]
+```
+
+#### Required Arguments
+| Flag          | Description |
+|---------------|-------------|
+| `--problem -p` | Problem family: `random`, `lasso`, `svm`, `portfolio` |
+| `--n`         | Number of primal variables (integer) |
+| `-o --output` | Output file name (`.mps.gz` suffix added automatically if omitted) |
+
+#### Optional Flags
+| Flag           | Default | Description |
+|----------------|---------|-------------|
+| `--seed`       | 1       | Random seed for reproducibility |
+| `--sparsity`   | 1e-3    | Fraction of non-zeros in random matrices |
+| `--condition`  | 1e2     | Condition number for random QP Hessian |
+
+#### Quick Examples
+```bash
+# Random convex QP, 10 000 variables
+julia gen_qp.jl --problem random --n 10000 -o random_QP.mps.gz
+
+# LASSO problem with 2 000 variables
+julia gen_qp.jl --problem lasso --n 2000 -o lasso.mps.gz
+
+# Linear SVM with 3 000 features
+julia gen_qp.jl --problem svm --n 3000 -o svm.mps.gz
+
+# Markowitz portfolio model with 4 000 assets
+julia gen_qp.jl --problem portfolio --n 4000 -o port.mps.gz
+```
+
+#### Output
+Each command produces a gzip-compressed MPS file ready for any QP solver that accepts the standard format.
 ## Real World Large Instances
 
 ### LIBSVM

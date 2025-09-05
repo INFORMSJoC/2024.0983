@@ -1,5 +1,5 @@
 using JuMP, GZip, SparseArrays, Random, Gurobi
-
+using ArgParse
 mutable struct QuadraticProgrammingProblem
     n::Int64
     m::Int64
@@ -16,16 +16,15 @@ mutable struct QuadraticProgrammingProblem
     num_equalities::Int64
 end
 
-function generate_randomQP_problem(n::Int, seed::Int=1, sparsity::Float64=1e-4)
+function generate_randomQP_problem(n::Int, seed::Int=1, sparsity::Float64=1e-3, condition_num::Float64=1e2)
     Random.seed!(seed)
     m = Int(0.5 * n)
-    sparsity = 1e-3
     # Generate problem data
     P = sprandn(n, 1000, sparsity)
     rowval = collect(1:n)
     colptr = collect(1:n+1)
     nzval = ones(n)
-    P = P * P' + 1e-2 * SparseMatrixCSC(n, n, colptr, rowval, nzval)
+    P = P * P' + (1/condition_num) * SparseMatrixCSC(n, n, colptr, rowval, nzval)
     q = randn(n)
     A = sprand(m, n, sparsity)
 
@@ -257,5 +256,56 @@ function save_qp_to_mps_gz(qp::QuadraticProgrammingProblem, filename::String)
 end
 
 
-qp = generate_randomQP_problem(10000)  
-save_qp_to_mps_gz(qp, "random_QP.mps.gz")
+function parse_commandline()
+    s = ArgParseSettings()
+    @add_arg_table! s begin
+        "--problem", "-p"
+            help = "problem type: random, lasso, svm, portfolio"
+            required = true
+        "--n"
+            help = "problem dimension (n)"
+            arg_type = Int
+            default = 1000
+        "--seed"
+            help = "random seed"
+            arg_type = Int
+            default = 1
+        "--sparsity"
+            help = "sparsity for random/lasso/svm/portfolio"
+            arg_type = Float64
+            default = 1e-3
+        "--condition"
+            help = "condition number for random QP"
+            arg_type = Float64
+            default = 1e2
+        "-o", "--output"
+            help = "output .mps.gz file"
+            required = true
+    end
+    parse_args(s)
+end
+
+function main()
+    args = parse_commandline()
+    n    = args["n"]
+    seed = args["seed"]
+    sp   = args["sparsity"]
+    cond = args["condition"]
+    qp   = let
+        if args["problem"] == "random"
+            generate_randomQP_problem(n, seed, sp, cond)
+        elseif args["problem"] == "lasso"
+            generate_lasso_problem(n, seed, sp)
+        elseif args["problem"] == "svm"
+            generate_svm_problem(n, seed, sp)
+        elseif args["problem"] == "portfolio"
+            generate_portfolio_problem(n, seed, sp)
+        else
+            error("unknown problem type")
+        end
+    end
+    save_qp_to_mps_gz(qp, args["output"])
+    println("✅  Problem saved to $(args["output"])")
+end
+
+main()
