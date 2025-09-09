@@ -97,16 +97,16 @@ The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and wil
 ### Numerical Advantege
 #### Comparison over different condition number
 
-<img src="asset/condition.png" width="50%" />
+<img src="results/condition.png" width="50%" />
 
 #### Experiment Over Public Benchmark
-<img src="asset/MM.png" width="50%" />
+<img src="results/MM.png" width="50%" />
 
 #### Comparison over generated large instances
-<img src="asset/randomqp.png" width="50%" />
+<img src="results/randomqp.png" width="50%" />
 
 #### Comparison over real-world large instances
-<img src="asset/real_large.png" width="50%" />
+<img src="results/real_large.png" width="50%" />
 
 ## Compilation and Usage
 See the document of our released version of [PDHCG](../../releases/tag/v0.1.0)
