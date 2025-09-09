@@ -90,7 +90,7 @@ A table of iteration stats will be printed with the following headings.
 | PDHCG-fixed | $\mathcal{O}\left(\left(\|A\|+\sqrt{\gamma_K^N\|Q\|}+\frac{\gamma_K^N\|Q\|}{\|A\|}\right) \log \frac{1}{\epsilon}\right)$ | $N$ |
 | PDHCG-adaptive | $\mathcal{O}\left(\|A\| \cdot \log \frac{1}{\epsilon}\right)$ | $\log_{r} \frac{\zeta}{2(1+\tau\|A\|)(1+\tau\|Q\|)}$ |
 
-$^1$The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and will be specified in the paper.
+The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and will be specified in the paper.
 
 **Compared to rAPDHG, PDHCG algorithm significantly reduces the dependency on $Q$.**
 
