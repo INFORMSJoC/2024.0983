@@ -1,4 +1,4 @@
-# Data used in PDHCG
+# Data 
 
 ## Public Benchmarks
 
@@ -20,16 +20,19 @@ We filtered and relaxed some of these, collecting 34 problems for our tests. Giv
 We provide generating scripts for 4 types of QP problems implemented in `generator.jl`
 
 #### Installation
+
 ```bash
 julia -e 'using Pkg; Pkg.add(["ArgParse", "JuMP", "GZip", "SparseArrays", "Random", "Gurobi"])'
 ```
 
 #### Usage
+
 ```bash
 julia gen_qp.jl --problem <type> --n <size> [-o <file>] [optional flags]
 ```
 
 #### Required Arguments
+
 | Flag          | Description |
 |---------------|-------------|
 | `--problem -p` | Problem family: `random`, `lasso`, `svm`, `portfolio` |
@@ -37,6 +40,7 @@ julia gen_qp.jl --problem <type> --n <size> [-o <file>] [optional flags]
 | `-o --output` | Output file name (`.mps.gz` suffix added automatically if omitted) |
 
 #### Optional Flags
+
 | Flag           | Default | Description |
 |----------------|---------|-------------|
 | `--seed`       | 1       | Random seed for reproducibility |
@@ -44,6 +48,7 @@ julia gen_qp.jl --problem <type> --n <size> [-o <file>] [optional flags]
 | `--condition`  | 1e2     | Condition number for random QP Hessian |
 
 #### Quick Examples
+
 ```bash
 # Random convex QP, 10 000 variables
 julia gen_qp.jl --problem random --n 10000 -o random_QP.mps.gz
@@ -59,7 +64,9 @@ julia gen_qp.jl --problem portfolio --n 4000 -o port.mps.gz
 ```
 
 #### Output
+
 Each command produces a gzip-compressed MPS file ready for any QP solver that accepts the standard format.
+
 ## Real World Large Instances
 
 ### LIBSVM
@@ -69,3 +76,20 @@ Each command produces a gzip-compressed MPS file ready for any QP solver that ac
 ### SuiteSparse Matrix Collection
 
 - Original Data can be found at http://sparse.tamu.edu/.
+
+### Problem Loader
+
+We provide generating scripts for loading these problem, see `real_problem_load.jl`.
+
+#### Usage
+
+```bash
+julia real_problem_load.jl --file_path <path_to_libsvm_file> --output_path <output_mps_gz_file>
+```
+
+#### Required Arguments
+
+| Flag          | Description |
+|---------------|-------------|
+| `--file_path`   | Path to the input LIBSVM format file. |
+| `--output_path` | Path to save the output MPS.GZ file. |
