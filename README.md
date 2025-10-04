@@ -108,20 +108,20 @@ The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and wil
 #### Comparison over real-world large instances
 <img src="results/real_large.png" width="50%" />
 
-## Compilation and Usage
-See the document of our released version of [PDHCG](../../releases/tag/v0.1.0)
+## Usage
+See the document of our codebase of [PDHCG](src/README.md).
 
 ## Replicating
 To replicate the experimental results as reported in the paper:
 1. Follow the [data document](data/README.md), where all experiments data are supported, to generate MPS files.
-2. Use [compiled PDHCG](../../releases/tag/v0.1.0) to solve MPS files.
+2. Use [PDHCG](src/README.md) to solve MPS files.
 
 ## Ongoing Development
 
 This code is being developed on an on-going basis at the author's
-[Github site](https://github.com/COPT-Public/PDHCG).
+[Github site](https://github.com/Lhongpei/PDHCG).
 
 ## Support
 
 For support in using this software, submit an
-[issue](https://github.com/COPT-Public/PDHCG/issues/new).
+[issue](https://github.com/Lhongpei/PDHCG/issues/new).

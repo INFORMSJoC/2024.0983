@@ -14,6 +14,10 @@ The QPLIB dataset includes various quadratic programming problems, including tho
 
 We filtered and relaxed some of these, collecting 34 problems for our tests. Given the larger size of this dataset compared to Maros–Mészáros, we set the algorithm's time limit to 3600 seconds.
 
+### Data Source
+These two benchmarks are selected from:
+- Maros–Mészáros benchmark [https://www.cuter.rl.ac.uk/Problems/marmes.html]
+- QPLIB [https://qplib.zib.de/]
 
 ## Generated Datasets
 

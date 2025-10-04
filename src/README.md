@@ -313,7 +313,7 @@ end
 
 ## Example Usage
 ```julia
-qp_problem = readFile
+qp_problem = readFile("YOUR_FILE")
 log = pdhcgSolve(qp_problem)
 
 if log.termination_reason == TERMINATION_REASON_OPTIMAL
