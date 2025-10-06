@@ -1,6 +1,10 @@
 
 # PDHCG Codebase
 
+This folder contains the official implementation of the restarted Primal-Dual Hybrid Conjugate Gradient (PDHCG) algorithm for solving large-scale convex quadratic programming problems.
+
+Part of the code utilizes [PDQP.jl](https://github.com/jinwen-yang/PDQP.jl) by Jinwen Yang and Haihao Lu.
+
 # Install
 - set Environment path `export JULIA_PROJECT=./src/env`
 - Install Package:
@@ -8,7 +12,6 @@
     julia> ]
     pkg> instantiate
     ```
-
 
 # Documentation: Julia Interface for PDHCG QP Solver
 
