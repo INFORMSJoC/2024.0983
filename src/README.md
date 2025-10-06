@@ -6,11 +6,15 @@ This folder contains the official implementation of the restarted Primal-Dual Hy
 Part of the code utilizes [PDQP.jl](https://github.com/jinwen-yang/PDQP.jl) by Jinwen Yang and Haihao Lu.
 
 # Install
-- set Environment path `export JULIA_PROJECT=./src/env`
 - Install Package:
     ```shell
     julia> ]
+    pkg> activate ./src/env
     pkg> instantiate
+    ```
+- Test:
+    ```shell
+    julia> include("scripts/run_data.jl")
     ```
 
 # Documentation: Julia Interface for PDHCG QP Solver
