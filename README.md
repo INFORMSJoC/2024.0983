@@ -11,7 +11,7 @@ that were used in the research reported on in the paper
 
 
 **Important: This code is being developed on an on-going basis at 
-https://github.com/COPT-Public/PDHCG. Please go there if you would like to
+https://github.com/Lhongpei/PDHCG. Please go there if you would like to
 get a more recent version or would like support**
 
 ## Cite
@@ -41,7 +41,20 @@ Below is the BibTex for citing this snapshot of the repository.
 This repository provides the data and solver suggested in **A Restarted Primal-Dual Hybrid Conjugate Gradient Method for Large-Scale Quadratic Programming**.
 
 ## Data
-See `data/READNE.md`.
+See [data/README.md](data/README.md).
+
+## Usage
+We provide 3 scripts in [scripts/](scripts/), including:
+- [`run_data.jl`](scripts/run_dataset.jl) Run PDHCG to solve a QP instance.
+- [`run_dataset.jl`](scripts/run_dataset.jl) Run PDHCG over one dataset.
+- [`run_generated.jl`](scripts/run_generated.jl) A Pipeline to randomly generate instance and use PDHCG to solve it. 
+
+See the [document](src/README.md) of PDHCG for detailed APIs.
+
+## Replicating
+To replicate the experimental results as reported in the paper:
+1. Follow the [data document](data/README.md), where all experiments data are supported, to generate MPS/QPS files.
+2. Use [PDHCG](src/README.md) to solve MPS/QPS files.
 
 ## Output Intepretation
 
@@ -108,13 +121,7 @@ The constants $\gamma_K \in (0, 1), r, \tau, \zeta$ are constant numbers and wil
 #### Comparison over real-world large instances
 <img src="results/real_large.png" width="50%" />
 
-## Usage
-See the document of our codebase of [PDHCG](src/README.md).
 
-## Replicating
-To replicate the experimental results as reported in the paper:
-1. Follow the [data document](data/README.md), where all experiments data are supported, to generate MPS files.
-2. Use [PDHCG](src/README.md) to solve MPS files.
 
 ## Ongoing Development
 

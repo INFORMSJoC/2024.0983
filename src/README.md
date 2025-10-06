@@ -2,7 +2,7 @@
 # PDHCG Codebase
 
 # Install
-- set Environment path `export JULIA_PROJECT=./`
+- set Environment path `export JULIA_PROJECT=./src/env`
 - Install Package:
     ```shell
     julia> ]
