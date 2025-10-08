@@ -1,3 +1,7 @@
+#  This file contains code derived from PDQP.jl
+#  Copyright (c) 2024 Jinwen Yang
+#  https://github.com/jinwen-yang/PDQP.jl
+#  Licensed under the MIT License.
 
 @enum OptimalityNorm L_INF L2
 

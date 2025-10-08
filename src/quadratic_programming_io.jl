@@ -1,3 +1,8 @@
+#  This file contains code derived from PDQP.jl
+#  Copyright (c) 2024 Jinwen Yang
+#  https://github.com/jinwen-yang/PDQP.jl
+#  Licensed under the MIT License.
+
 ####################################################################
 # quadratic_programming_io.jl utilizes the code of FirstOrderLp.jl #
 ####################################################################

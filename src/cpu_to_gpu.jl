@@ -1,3 +1,8 @@
+#  This file contains code derived from PDQP.jl
+#  Copyright (c) 2024 Jinwen Yang
+#  https://github.com/jinwen-yang/PDQP.jl
+#  Licensed under the MIT License.
+
 mutable struct CuQuadraticProgrammingProblem
     num_variables::Int64
     num_constraints::Int64

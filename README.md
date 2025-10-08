@@ -132,3 +132,9 @@ This code is being developed on an on-going basis at the author's
 
 For support in using this software, submit an
 [issue](https://github.com/Lhongpei/PDHCG/issues/new).
+
+## Acknowledgments
+
+Portions of this package are derived from
+[PDQP.jl](https://github.com/jinwen-yang/PDQP.jl)
+by Jinwen Yang, licensed under the MIT License.

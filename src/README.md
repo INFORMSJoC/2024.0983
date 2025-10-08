@@ -3,7 +3,6 @@
 
 This folder contains the official implementation of the restarted Primal-Dual Hybrid Conjugate Gradient (PDHCG) algorithm for solving large-scale convex quadratic programming problems.
 
-Part of the code utilizes [PDQP.jl](https://github.com/jinwen-yang/PDQP.jl) by Jinwen Yang and Haihao Lu.
 
 # Install
 - Install Package:
@@ -336,3 +335,4 @@ end
 - All norms and residuals assume the primal is a minimization problem
 - The dual vector includes only linear constraint multipliers (not reduced costs)
 - Relative residuals are scaled by `(eps_optimal_absolute / eps_optimal_relative)`
+

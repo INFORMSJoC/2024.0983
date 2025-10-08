@@ -2,13 +2,18 @@
 
 ## Public Benchmarks
 
-Following datasets can be found at https://github.com/Lhongpei/QP_datasets.
-
 ## Maros–Mészáros Dataset
 
 The Maros–Mészáros dataset, a standard benchmark for convex quadratic programming, comprises 134 problems, which can be found at https://www.doc.ic.ac.uk/~im/. We set the algorithm's time limit to 600 seconds for this dataset due to its smaller size.
 
-The problem list used in our experiment can be found [here](data/selected_data/Maros–Mészáros.txt).
+The download links for this dataset are:
+http://www.doc.ic.ac.uk/%7Eim/QPDATA1.ZIP
+http://www.doc.ic.ac.uk/%7Eim/QPDATA2.ZIP
+http://www.doc.ic.ac.uk/%7Eim/QPDATA3.ZIP
+
+We downloaded this dataset in November 2023; our snapshot of the files is available at https://github.com/Lhongpei/QP_datasets.
+
+The problem list used in our experiment can be found [here](selected_data/Maros–Mészáros.txt).
 
 ## QPLIB Dataset
 
@@ -16,7 +21,10 @@ The QPLIB dataset includes various quadratic programming problems, including tho
 
 We filtered and relaxed some of these, collecting 34 problems for our tests. Given the larger size of this dataset compared to Maros–Mészáros, we set the algorithm's time limit to 3600 seconds.
 
-The problem list used in our experiment can be found [here](data/selected_data/QPLIB.txt).
+We downloaded this dataset in November 2023; our snapshot of the files is available at https://github.com/Lhongpei/QP_datasets.
+
+The problem list used in our experiment can be found [here](selected_data/QPLIB.txt).
+
 
 ## Generated Datasets
 
@@ -81,7 +89,7 @@ Each command produces a gzip-compressed MPS file ready for any QP solver that ac
 - Original Data can be found at http://sparse.tamu.edu/.
 
 ### Problem Loader
-The problem list used in our experiment can be found [here](data/selected_data/real_data.txt).
+The problem list used in our experiment can be found [here](selected_data/real_data.txt).
 
 We provide generating scripts for loading these problem, see `real_problem_load.jl`.
 
